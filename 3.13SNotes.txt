@@ -1,0 +1,114 @@
+import java.security.SecureRandom;
+import java.util.Arrays;
+
+public class BinarySearch
+{
+    public static void main(String[] args)
+    {
+        //Create an object of self class
+        BinarySearch oBinarySearch = new BinarySearch();
+
+        //Run runRecursiveTest method
+        oBinarySearch.runRecursiveTest();
+    }
+
+    private void runRecursiveTest()
+    {
+        //SecureRand obj
+        SecureRandom oRand = new SecureRandom();
+
+        //int array
+        int[] aiNumbers = new int[10];
+
+        int iTargetNum;
+        int iTargetNumIndex;
+        int iIndexFound;
+
+        //Fill array with random numbers.
+        for(int x=0; x<aiNumbers.length;x++)
+        {
+            aiNumbers[x] = oRand.nextInt(20000000);
+        }
+
+        //Need to have ordered data for Binary Search.
+        Arrays.sort(aiNumbers);
+
+
+        //Get a random index with length of array -> get index & figure out number corresponding to element
+        iTargetNumIndex = oRand.nextInt(aiNumbers.length);
+        iTargetNum = aiNumbers[iTargetNumIndex];
+
+        
+        iIndexFound = findNumbersBinarySearch(aiNumbers, iTargetNum, 0, aiNumbers.length-1);
+
+        System.out.println("Correct answer: "+ iTargetNumIndex);
+        System.out.println("Returned answer: "+ iIndexFound);
+
+        long startTime;
+        long elapsedTime;
+
+        // BEGIN TEST Binary Search
+
+        startTime = System.nanoTime();
+        iIndexFound = findNumbersBinarySearch(aiNumbers, iTargetNum, 0,
+                aiNumbers.length - 1);
+
+        elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Binary Search time: " + elapsedTime);
+
+        // END TEST Binary Search
+
+        // BEGIN TEST Linear Search
+
+        startTime = System.nanoTime();
+        iIndexFound = findNumberLinearSearch(aiNumbers, iTargetNum);
+        elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Linear Search time: " + elapsedTime);
+
+        // END TEST Linear Search
+
+    }
+
+    /*
+        Binary Search: Find index of number using recursive implementation.
+        Note : Method expects number/answer to be in array.
+    */
+    private int findNumbersBinarySearch(int[] aiNumbers, int iTarget, int iLowIndex,
+                                        int iHighIndex)
+    {
+        //Firgure out the middle index.
+        int iMiddleIndex = (iLowIndex + iHighIndex) / 2;
+
+        //Check if target at middle index.
+        if(aiNumbers[iMiddleIndex] == iTarget)
+        {
+            return iMiddleIndex;
+        }
+
+        //Check if target is lower than number at middle index.
+        else if(iTarget < aiNumbers[iMiddleIndex])
+        {
+           return findNumbersBinarySearch(aiNumbers, iTarget, iLowIndex, iMiddleIndex - 1);
+        }
+
+        //Target is higher than middle index number.
+        else
+        {
+            return findNumbersBinarySearch(aiNumbers, iTarget, iMiddleIndex+1, iHighIndex);
+        }
+    }
+
+    //Linear search: Find index of number using linear search.
+    private int findNumberLinearSearch(int[] aiNumbers, int iTarget)
+    {
+        for(int x=0; x<aiNumbers.length;x++)
+        {
+            if(aiNumbers[x] == iTarget)
+            {
+                return x;
+            }
+        }
+
+        return -1;
+    }
+}
