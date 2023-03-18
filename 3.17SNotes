@@ -1,0 +1,61 @@
+
+/**
+	3/17/23
+	v 0.0.3
+*/
+
+
+import java.util.ArrayList;
+
+public class Main 
+{
+    public static void main(String[] args)
+{
+
+    Pair<String, Double> oStock1 = new Pair<>("Google", 15.6);
+	Pair<String, Double> oStock2 = new Pair<>("Microsoft", 13.6);
+    
+    //Create ArrayList 
+    ArrayList<Pair<String, Double>> lstStocks = new ArrayList<>();
+    
+    //Add objects to ArrayList 
+    lstStocks.add(oStock1);
+    lstStocks.add(oStock2);
+    
+    //Get access to element then making an object with 
+    //type of generic?
+    Pair<String, Double> oStockAt1 = lstStocks.get(1);
+    
+    //Print out object 
+    System.out.println("Stock at index 1 is " + oStockAt1.getFirst() + " (" + oStockAt1.getSecond() + ")");
+}
+}
+
+/*******************************************************/
+/*******************************************************/
+/*******************************************************/
+/*******************************************************/
+/*******************************************************/
+
+public class Pair <A, B> {
+    
+    private A first;
+    private B second;
+    
+    public Pair(A a, B b)
+    {
+        first = a;
+        second = b;
+    }
+    
+    public A getFirst()
+    {
+        return first;
+    }
+    
+    public B getSecond()
+    {
+        return second; 
+    }
+    
+}
