@@ -5,23 +5,53 @@ public class Main
 	public static void main(String[] args) 
 	{
 		//2.b 
-		Triple<String, Integer, Integer> oTeam1 = new Triple<>("Raiders", 4, 6);
-		Triple<String, Integer, Integer> oTeam2 = new Triple<>("Giants", 4, 6);
-		Triple<String, Integer, Integer> oTeam3 = new Triple<>("Colts", 4, 6);
-		Triple<String, Integer, Integer> oTeam4 = new Triple<>("Eagles", 4, 6);
+		Triple<String, Integer, Integer> oTeam1 = new Triple<>("Raiders", 1, 6);
+		Triple<String, Integer, Integer> oTeam2 = new Triple<>("Giants", 1, 6);
+		Triple<String, Integer, Integer> oTeam3 = new Triple<>("Colts", 2, 6);
+		Triple<String, Integer, Integer> oTeam4 = new Triple<>("Eagles", 6, 6);
 		Triple<String, Integer, Integer> oTeam5 = new Triple<>("Bears", 4, 6);
 	
-	    //2.c  ????
-	    <Triple<String,Integer,Integer> [] aoTriple = new Triple[5];
-	    //aoTriple.add(oTeam1);  
+	    //2.c  
+	    Triple<String,Integer,Integer> [] aoTriple = new Triple[5];
+	    aoTriple[0] = oTeam1;
+	    aoTriple[1] = oTeam2;
+	    aoTriple[2] = oTeam3;
+	    aoTriple[3] = oTeam4;
+	    aoTriple[4] = oTeam5;
 	    
 	    //2.d 
 	    Pair<String,Double> [] aoPair = new Pair[5];
 	    
 	    //2.e 
+	    for(int i = 0; i < aoTriple.length; i++)
+	    {
+	        int totalGames = aoTriple[i].getSecond() + aoTriple[i].getThird();
+	        double win = (double)aoTriple[i].getSecond() / totalGames; 
+	        aoPair[i] = new Pair<>(aoTriple[i].getFirst(), win);
+	    }
 	    
+	    int bestIndex = 0;
+	    
+	    
+	    //2.f 
+	    for(int i = 0; i < aoPair.length; i++)
+	    {
+	        
+	        if(aoPair[i].getSecond() > aoPair[bestIndex].getSecond())
+	        {
+	            bestIndex = i; 
+	        }
+	        
+	        System.out.println(aoPair[i].getFirst() + " " + aoPair[i].getSecond());
+	        
+	    }
+	    
+	    System.out.println("highest win : " + aoPair[bestIndex].getFirst() + " " + aoPair[bestIndex].getSecond());
+
+
 	}
 }
+
 
 /**************************************************************/
 /**************************************************************/
