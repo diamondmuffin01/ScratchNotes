@@ -1,0 +1,89 @@
+import java.util.ArrayList;
+
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		//2.b 
+		Triple<String, Integer, Integer> oTeam1 = new Triple<>("Raiders", 4, 6);
+		Triple<String, Integer, Integer> oTeam2 = new Triple<>("Giants", 4, 6);
+		Triple<String, Integer, Integer> oTeam3 = new Triple<>("Colts", 4, 6);
+		Triple<String, Integer, Integer> oTeam4 = new Triple<>("Eagles", 4, 6);
+		Triple<String, Integer, Integer> oTeam5 = new Triple<>("Bears", 4, 6);
+	
+	    //2.c  ????
+	    <Triple<String,Integer,Integer> [] aoTriple = new Triple[5];
+	    //aoTriple.add(oTeam1);  
+	    
+	    //2.d 
+	    Pair<String,Double> [] aoPair = new Pair[5];
+	    
+	    //2.e 
+	    
+	}
+}
+
+/**************************************************************/
+/**************************************************************/
+/**************************************************************/
+
+
+
+public class Pair <A, B> 
+{
+    private A first; 
+    private B second; 
+    
+    public Pair(A a, B b)
+    {
+        first = a;
+        second = b;
+    }
+    
+    public A getFirst()
+    {
+        return first;
+    }
+    
+    public B getSecond()
+    {
+        return second; 
+    }
+}
+
+
+
+/**************************************************************/
+/**************************************************************/
+/**************************************************************/
+
+
+public class Triple <A, B, C> 
+{
+    private A first; 
+    private B second; 
+    private C third; 
+    
+    public Triple(A a, B b, C c)
+    {
+        first = a;
+        second = b;
+        third = c;
+    }
+    
+    public A getFirst()
+    {
+        return first;
+    }
+    
+    public B getSecond()
+    {
+        return second; 
+    }
+    
+    public C getThird()
+    {
+        return third; 
+    }
+    
+}
