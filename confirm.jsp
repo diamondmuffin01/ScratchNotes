@@ -8,10 +8,7 @@
 	//#####################################################################################
 	//###### Your java code here to declare and instantiate FavoritesManager object. ######
 	
-	FavoritesManager favMan = new FavoritesManager();
-	
-	
-	
+	FavoritesManager favMana = new FavoritesManager();
 	
 	//###### You will be using this variable in the "if" statements lower down.      ######
 	
@@ -38,10 +35,8 @@
 				  
 				  %>
 
-				<% 
-				/***************************************************
-				= request.getParameter("firstname") + 
-				      request.getParameter("lastname") % >
+				<%= request.getParameter("firstname") + " " +
+				      request.getParameter("lastname") %>
 
 			</td>
 		</tr>
@@ -70,7 +65,7 @@
 					//is my favorite movie!
 					
 					//************************************************
-					if(???) 
+					if(favMana.checkFavoriteMovie(SMovie)) 
 					{
 					     %><b>is</b> my favorite movie!<% 
 					}
@@ -99,14 +94,14 @@
 					//#####################################################
 					//###### Your java code here to call actor check ######
           //************************************************
-          ????          
+                  
 
 					//### For this section, follow the steps up above again, only you're
 					//substituting actor now instead of movie.
 					
 					//************************************************
           String SActor = request.getParameter("actor");
-          if(???) 
+          if(favMana.checkFavoriteActor(SActor)) 
 					{
 					     %><b>is</b> my favorite actor!<% 
 					}
