@@ -1,3 +1,5 @@
+
+
 <html>
   <head>
     
@@ -54,7 +56,7 @@
       // Create first line of for loop here that loops iRows times.
       // ###############################
       
-        for(int row = 0; row < aRaY.length; row++)
+        for(int y = 0; y < iRows; y++)
           { 
         
           %>
@@ -64,7 +66,7 @@
           // Create first line of for loop here that loops iCols times.
           // ###############################
           
-          for(int col = 0; col < numbers[row].length; col++)
+          for(int x = 0; x < iCols; x++)
                 {
         
             %>

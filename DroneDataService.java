@@ -1,3 +1,5 @@
+//updated 5/3/23
+
 package com.dronerecon.ws;
 
         import javax.servlet.*;
@@ -8,7 +10,7 @@ package com.dronerecon.ws;
 
 /**
  *
- * @author Cesar Melero
+ * @author Cesar Melero 
  */
 public class DroneDataService extends HttpServlet{
 
@@ -22,11 +24,11 @@ public class DroneDataService extends HttpServlet{
 
         PrintWriter out = response.getWriter();
         
-        request.getParameter("area_id");
-        request.getParameter("tilex");
-        request.getParameter("tiley");
-        request.getParameter("totalcols");
-        request.getParameter("totalrows");
+        String area = request.getParameter("area_id");
+        String tilex = request.getParameter("tilex");
+        String tiley = equest.getParameter("tiley");
+        String totalcols = request.getParameter("totalcols");
+        String totalrows = request.getParameter("totalrows");
 
         // ##############################
         // 2. Default value of beginning direction.
@@ -44,9 +46,46 @@ public class DroneDataService extends HttpServlet{
         // Change sDirection if necessary.
         // Drone must serpentine from top left of grid back and forth down.
         // If rows are done, change sDirection to "stop".
+
         // ##############################
 
+        int row = Integer.parseInt(tiley);
+        int col = Integer.parseInt(tilex);
+        int totalRows = Integer.parseInt(totalrows);
+        int totalCols = Integer.parseInt(totalcols);
 
+        if(row%2 == 0)
+        {
+            if(col == totalCols - 1 )
+            {
+                sDirection = "left";
+                row++;
+            }
+
+            else 
+            {
+                col++;
+            }
+        }
+
+        else 
+        {
+            if(col == 0)
+            {
+                row++;
+            }
+
+            else 
+            {
+                sDirection = "left";
+                col--;
+            }
+        }
+
+        if(row == totalRows)
+        {
+            sDirection = "stop";
+        }
 
         // ##############################
         // 4. Format & Return JSON string to caller.
@@ -55,6 +94,14 @@ public class DroneDataService extends HttpServlet{
         {"area_id":"[area id from above]", "nextTileX":"[next tile x]", "nextTileY":"[next tile y]", "direction":"[direction string from above]"}
         */
         // ##############################
+
+        String Jstring = "{\"area_id\":\""+area
+        +"\", \"nextTileX\":\""+col
+        +"\", \"nextTileY\":\""+row
+        +"\", \"direction\":\""+sDirection+"\"}";
+
+        out.println(Jstring);
+
 
     }
 }
